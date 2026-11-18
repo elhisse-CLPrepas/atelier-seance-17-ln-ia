@@ -1,0 +1,12 @@
+node_modules/
+.DS_Store
+*.log
+/mon-dossier-challenge-Module05/
+/tmp/
+__pycache__/
+*.pyc
+Thumbs.db
+Desktop.ini
+.env
+.env.*
+!.env.example
