@@ -4,6 +4,8 @@ Dépôt commun aux ateliers S17 à S20 de LN-IA. Il contient les productions, le
 
 Ouvrez `index.html` pour retrouver le mini-site et le carnet d’essai. Consultez `GUIDE-DOSSIER.md` pour le parcours pédagogique et les exports.
 
+Consultez [le flux de versionnement](FLUX-VERSIONNEMENT.md) pour récupérer, contrôler, enregistrer et partager les productions, puis les intégrer à l’atelier.
+
 ## Versionnement indépendant
 
 Ce dossier possède son propre dépôt Git et son remote :

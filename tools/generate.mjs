@@ -5,6 +5,9 @@ import {renderSite,escapeHtml as e} from '../src/render.js';
 import {blankState,planText,proofText,indexText,relayText} from '../src/exports.js';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const data=JSON.parse(await fs.readFile(path.join(root,'src/seance.json'),'utf8'));
+data.affiches=JSON.parse(await fs.readFile(path.join(root,'src/affiches.json'),'utf8'));
+await fs.mkdir(path.join(root,'public/assets/affiches'),{recursive:true});
+for(const poster of data.affiches)await fs.copyFile(path.join(root,'AFFICHES',poster.source),path.join(root,'public/assets/affiches',poster.file));
 const config=JSON.parse(await fs.readFile(path.join(root,'site.config.json'),'utf8'));
 const challenge=path.join(root,'mon-dossier-challenge-Module05');
 await fs.access(path.join(challenge,'index.html')).catch(()=>{throw new Error('Dépôt commun absent : clonez mon-dossier-challenge-Module05 comme indiqué dans docs/VERSIONNEMENT-LOCAL.md.');});
@@ -36,4 +39,5 @@ await fs.copyFile(path.join(root,'docs/PROMPT-MAITRE-MODULE-05.md'),path.join(ro
 await write('public/robots.txt',config.publicUrl&&config.indexable?`User-agent: *\nAllow: /\nSitemap: ${config.publicUrl.replace(/\/?$/,'/')}sitemap.xml\n`:'User-agent: *\nDisallow: /\n');
 const map=path.join(root,'public/sitemap.xml');
 if(config.publicUrl&&config.indexable)await write('public/sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${e(config.publicUrl.replace(/\/?$/,'/'))}</loc></url></urlset>`);else await fs.rm(map,{force:true});
+await fs.appendFile(path.join(root,publicBase+'notes-formateur-S17.md'),'\n## Affiches du parcours — annexe visuelle\n\nLes 22 vues pédagogiques sont suivies de neuf affiches dans le PDF et le PowerPoint. La galerie de la rubrique Présentation permet de les ouvrir en grand. Les supports originaux conservent leurs dates imprimées ; le calendrier de référence reste celui de l’automne 2026.\n\n'+data.affiches.map((p,i)=>`- Annexe ${i+1} : ${p.title}. ${p.caption}`).join('\n')+'\n\nPrésenter le module et S17 en ouverture, utiliser la fiche de départ lors du cadrage et réserver les autres affiches à la transition vers les séances suivantes.\n');
 console.log('S17 : HTML, notes, modèles et ressources textuelles générés depuis src/seance.json.');

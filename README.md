@@ -28,6 +28,10 @@ Conservez les téléchargements dans `06-PORTFOLIO/carnet-essai-S17.md` et `06-P
 
 ## Supports
 
+Les neuf affiches originales du dossier `AFFICHES/` sont intégrées à la rubrique Présentation sous forme de galerie avec accès aux images en grand. Elles figurent également en annexe du PowerPoint et du PDF : 22 vues pédagogiques suivies de 9 planches visuelles. `src/affiches.json` fixe leur ordre et leurs légendes. Les dates imprimées sur les supports originaux ne remplacent pas le calendrier d’automne 2026 ; les affiches S18 à S20 et Module 06 présentent la suite du parcours.
+
+Pour l’animation : présenter les affiches Module 05 et S17 en ouverture, reprendre la fiche de départ avec le dossier candidat, puis utiliser les affiches suivantes lors du relais vers S18. Les variantes S20 servent à comparer les attentes du livrable final.
+
 `dist/supports/` contient la présentation PDF et PowerPoint, les notes, le conducteur, la fiche imprimable du carnet, les prompts, la révision et le kit complet. Les 22 vues, 12 cartes et 8 questions utilisent le même support.
 
 ## Reconstruire

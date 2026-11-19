@@ -270,3 +270,19 @@ Utiliser ce que vous savez maintenant expliquer
 Geste : Conservez une question et une amélioration à poursuivre.
 
 Parole du formateur : Faites rouvrir le carnet et la preuve depuis l’accueil du dossier. Le plan de page est un outil de préparation de S18. Ne remplacez pas les observations par un corrigé.
+
+## Affiches du parcours — annexe visuelle
+
+Les 22 vues pédagogiques sont suivies de neuf affiches dans le PDF et le PowerPoint. La galerie de la rubrique Présentation permet de les ouvrir en grand. Les supports originaux conservent leurs dates imprimées ; le calendrier de référence reste celui de l’automne 2026.
+
+- Annexe 1 : Le parcours du Module 05. Vue d’ensemble du parcours, en appui à la vue 4.
+- Annexe 2 : S17 : comprendre les fondations du Web. Repère d’ouverture pour observer HTML, CSS et JavaScript.
+- Annexe 3 : La fiche de départ du projet. Support de cadrage pour préparer la suite après les essais S17.
+- Annexe 4 : S18 : vers un mini-site V1. Transition vers la suite. La date d’été imprimée appartient au support original.
+- Annexe 5 : S19 : données locales et préparation PWA. Perspective pour la suite du module, au-delà des objectifs de S17.
+- Annexe 6 : S20 : produire, contrôler et prouver. Premier repère pour les essais et les preuves du livrable final.
+- Annexe 7 : S20 : second support de contrôle. Variante de l’affiche S20, conservée pour comparaison et discussion.
+- Annexe 8 : S20 : mettre en production le livrable. Horizon du parcours. Les résultats et la validation restent à établir.
+- Annexe 9 : Ouverture vers le Module 06. Perspective de production avancée, au-delà du programme de S17.
+
+Présenter le module et S17 en ouverture, utiliser la fiche de départ lors du cadrage et réserver les autres affiches à la transition vers les séances suivantes.

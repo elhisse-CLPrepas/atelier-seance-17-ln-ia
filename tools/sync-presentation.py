@@ -1,7 +1,7 @@
 """Synchronize text in the existing editable deck and render the matching PDF.
 
-The deck retains its masters, geometry, images and text styling. XML edits only
-replace the existing text placeholders and presenter notes.
+The first 22 slides retain their masters, geometry, images and text styling.
+Nine original posters are regenerated as an illustrated appendix.
 """
 from pathlib import Path
 import json,zipfile,io,html
@@ -14,6 +14,8 @@ from reportlab.lib.colors import HexColor,white
 R=Path(__file__).resolve().parents[1]
 D=json.loads((R/'src/seance.json').read_text(encoding='utf-8'))
 P=R/'public/supports/presentation-S17.pptx'
+from affiches import reset_deck,append_deck,append_pdf
+reset_deck(P)
 NS={'a':'http://schemas.openxmlformats.org/drawingml/2006/main'}
 REL='http://schemas.openxmlformats.org/package/2006/relationships'
 RID='http://schemas.openxmlformats.org/officeDocument/2006/relationships'
@@ -93,9 +95,11 @@ for i,s in enumerate(D['slides']):
   C.linkURL('../'+s['resource'],(48,8,700,27),relative=1)
  para(f'{i+1:02} / 22',865,493,60,10,muted)
  C.showPage()
+append_pdf(C,W,H,para)
 C.save()
+append_deck(P)
 # The workshop poster is a render of the current cover, never a cached old slide.
 import fitz
 with fitz.open(R/'public/supports/presentation-S17.pdf') as document:
  document[0].get_pixmap(matrix=fitz.Matrix(1280/W,1280/W)).save(R/'public/assets/affiche-S17.png')
-print('22 diapositives et notes synchronisées ; PDF régénéré.')
+print('22 diapositives et notes synchronisées ; 9 affiches en annexe du PPTX et du PDF.')
