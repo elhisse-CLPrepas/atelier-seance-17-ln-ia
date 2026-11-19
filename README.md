@@ -50,4 +50,10 @@ Pour modifier le site : `npm run dev`. Le carnet autonome s’ouvre directement 
 
 ## Publication
 
-Cette livraison reste locale. Aucune publication n’a été effectuée. Le plan de page et les modèles S18 à S20 préparent la suite du Module 05.
+Le déploiement GitHub Pages est configuré dans `.github/workflows/pages.yml`. Chaque envoi sur `main` publie le dossier `dist/` enregistré dans Git, avec les supports et la copie de diffusion du dossier Challenge.
+
+Adresse prévue : https://elhisse-clprepas.github.io/atelier-seance-17-ln-ia/
+
+Avant chaque envoi, reconstruire avec `npm run build`, vérifier avec `npm run check`, puis enregistrer les sources et la sortie `dist/` dans le même commit. Le workflow publie cette version construite sans dépendre du dépôt commun pendant le déploiement. Consulter l’onglet Actions du dépôt pour confirmer la réussite de la publication.
+
+Le plan de page et les modèles S18 à S20 préparent la suite du Module 05.
