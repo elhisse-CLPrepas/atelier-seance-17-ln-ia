@@ -1,9 +1,9 @@
 # Mini-site de démonstration — Séance 17
 
 **Version :** V1  
-**Statut :** À VALIDER  
+**Statut :** VALIDÉ ET APPROUVÉ  
 **Usage :** démonstration locale du Module 05  
-**Publication :** aucune publication automatique
+**Publication :** intégré au site de l’atelier sur GitHub Pages
 
 ## Objectif
 
@@ -61,22 +61,22 @@ Le bouton de la section « Observer un événement » :
 9. expliquer local, paquet contrôlé et publié ;
 10. conclure avec la validation humaine.
 
-## Tests à effectuer
+## Tests validés et approuvés
 
 ```text
-[ ] index.html s’ouvre localement
-[ ] l’affiche apparaît
-[ ] les trois cartes sont présentes
-[ ] le bouton fonctionne à la souris
-[ ] le bouton fonctionne au clavier
-[ ] le texte du bouton change
-[ ] la zone est affichée puis masquée
-[ ] le focus est visible
-[ ] la page reste lisible sur mobile
-[ ] le zoom à 200 % conserve le contenu essentiel
-[ ] les liens internes fonctionnent
-[ ] aucune erreur critique n’apparaît dans la console
-[ ] aucun chemin absolu ou secret n’est exposé
+[x] index.html s’ouvre localement
+[x] l’affiche apparaît
+[x] les trois cartes sont présentes
+[x] le bouton fonctionne à la souris
+[x] le bouton fonctionne au clavier
+[x] le texte du bouton change
+[x] la zone est affichée puis masquée
+[x] le focus est visible
+[x] la page reste lisible sur mobile
+[x] le zoom à 200 % conserve le contenu essentiel
+[x] les liens internes fonctionnent
+[x] aucune erreur critique n’apparaît dans la console
+[x] aucun chemin absolu ou secret n’est exposé
 ```
 
 ## Limites
@@ -87,12 +87,18 @@ Le bouton de la section « Observer un événement » :
 - pas de PHP ;
 - pas de formulaire ;
 - pas de collecte de données ;
-- pas de publication.
+- aucune fonction de publication dans le mini-site lui-même.
 
 ## Contrôle humain
 
-Le mini-site reste `À VALIDER`. Le formateur contrôle le scénario et le pilote humain décide de toute utilisation publique future.
+Le pilote de l’atelier a explicitement validé le README et approuvé l’ensemble des tests ci-dessus dans cette conversation le 20 novembre 2026. Les cases cochées consignent cette déclaration humaine ; elles ne constituent pas de nouveaux essais exécutés par l’IA.
+
+Cette validation concerne le support de démonstration V1. Les observations et preuves personnelles des candidats restent à renseigner pendant l’atelier. Le nom historique du dossier est conservé pour préserver les liens existants.
 
 ## Intégration dans S17
 
 Le menu donne accès aux fichiers, au dossier Challenge et au carnet d’essai. Une copie de travail se trouve dans `mon-dossier-challenge-Module05/04-WEB/mini-site-demonstration/`. Le pied de page situe les affiches d’été dans la séance d’automne ; aucune observation de candidat ni validation publique n’est prédéfinie.
+
+## Version publiée
+
+[Ouvrir le mini-site sur GitHub Pages](https://elhisse-clprepas.github.io/atelier-seance-17-ln-ia/dossier-challenge/04-WEB/mini-site-demonstration/index.html)
