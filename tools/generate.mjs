@@ -15,12 +15,15 @@ if(config.publicUrl&&!/^https:\/\/[^\s]+$/.test(config.publicUrl))throw new Erro
 async function write(p,content){const target=path.join(root,p);await fs.mkdir(path.dirname(target),{recursive:true});await fs.writeFile(target,content)}
 await write('index.html',renderSite(data,config));
 const publicBase='public/supports/';
+for(const name of ['INSTRUCTIONS-PRATIQUES-ATELIER-S17.md','PROMPT-MAITRE-MINI-SITE-S17.md']){
+  await fs.copyFile(path.join(root,name),path.join(root,publicBase,name));
+}
 await write(publicBase+'notes-formateur-S17.md',`# Notes formateur — S17\n\n${data.meta.dateLabel} · 22 vues · 90 minutes\n\n`+data.slides.map((s,i)=>`## ${i+1}. ${s.title}\n\n${s.lead}\n\n${s.points.map(([t,p])=>`- ${t} : ${p}`).join('\n')}\n\nGeste : ${s.gesture}\n\nParole du formateur : ${s.note}\n`).join('\n'));
 await write(publicBase+'conducteur-S17.md',`# Conducteur S17 — Comprendre les fondations du Web\n\n${data.meta.dateLabel} · Durée proposée : 90 minutes. Horaire à communiquer par le formateur.\n\n## Avant la séance\n\nOuvrir le dossier Challenge et le mini-site fourni. Vérifier le logo, la projection, le mini-site fourni et le carnet d’essai et les téléchargements. Constituer des binômes. Préparer un dossier 04-WEB et un dossier 06-PORTFOLIO.\n\n`+data.phases.map(p=>`## ${p.time} min · ${p.verb} · vues ${p.slides}\n\nFormateur : ${p.trainer}\n\nCandidat : ${p.candidate}\n\nObservation : ${p.observe}\n\nRelance : « ${p.relance} »\n`).join('\n')+`\n## Support commun de S17\n\nOuvrir le mini-site fourni dans le dossier Challenge. Observer les rôles de HTML, CSS et JavaScript ; renseigner le carnet avec les résultats réels. Le plan personnel prépare S18.\n\n## Si la connexion manque\n\nOuvrir OUVRIR-SEANCE-17.html après extraction complète. Utiliser le PDF et les fiches Markdown. Le dossier dist contient tous les supports. Les liens externes demandent une connexion.\n\n## Clôture\n\nRouvrir le carnet et la preuve. Le pilote consigne son nom, la date, son observation et le statut. Préparer le relais S18 sans déclarer cette séance déjà faite.\n`);
 await write(publicBase+'prompts-S17.md','# Prompts S17\n\n'+data.prompts.map(p=>`## ${p.title}\n\nEntrée : ${p.input}\n\nLimite : ${p.limit}\n\nSortie : ${p.output}\n\nContrôle : ${p.test}\n\n${p.text}\n`).join('\n'));
 await write(publicBase+'revision-S17.md','# Révision S17\n\n## 12 flashcards\n\n'+data.cards.map(([q,a],i)=>`### ${i+1}. ${q}\n\n${a}\n`).join('\n')+'\n## Quiz et correction de chaque choix\n\n'+data.quiz.map(([q,choices,correct,explanations],i)=>`### ${i+1}. ${q}\n\n`+choices.map((c,j)=>`- ${j+1}. ${c}${j===correct?' — Choix attendu':''}\n  ${explanations[j]}`).join('\n')+'\n').join('\n'));
 const blank=blankState(),kit=publicBase+'kit-candidat/';
-await fs.rm(path.join(root,kit),{recursive:true,force:true});
+await fs.rm(path.join(root,kit),{recursive:true,force:true,maxRetries:5,retryDelay:300});
 await write(kit+'04-WEB/structure-page-projet.md',planText(blank));
 await write(kit+'06-PORTFOLIO/preuve-S17.md',proofText(blank,data));
 await write(kit+'06-PORTFOLIO/index-portfolio.md',indexText(blank));
@@ -30,9 +33,17 @@ await write(kit+'LISEZ-MOI.md',`# Kit S17 — Comprendre le Web\n\nOuvrir index.
 // These are distribution snapshots. Never copy repository metadata or modify the source dossier.
 const copyOptions={recursive:true,filter:source=>!path.relative(challenge,source).split(path.sep).some(part=>['.git','.github','.gitignore','.gitattributes','node_modules','tmp','__pycache__'].includes(part)||part==='.env'||part.startsWith('.env.'))};
 const snapshot=path.join(root,'public/dossier-challenge');
-await fs.rm(snapshot,{recursive:true,force:true});
+await fs.rm(snapshot,{recursive:true,force:true,maxRetries:5,retryDelay:300});
 await fs.cp(challenge,snapshot,copyOptions);
 await fs.cp(challenge,path.join(root,kit),copyOptions);
+for(const base of [snapshot,path.join(root,kit)]){
+  // Keep the companion files together so their relative Markdown links still work.
+  for(const folder of ['01-SUIVI','02-PROMPTS']){
+    for(const name of ['INSTRUCTIONS-PRATIQUES-ATELIER-S17.md','PROMPT-MAITRE-MINI-SITE-S17.md']){
+      await fs.copyFile(path.join(root,name),path.join(base,folder,name));
+    }
+  }
+}
 // Publish the versioned S17 demonstration while preserving the shared dossier sources.
 const demoSource=path.join(root,'mini-site-demonstration-seance-17-v1-a-valider');
 const demoHtml=(await fs.readFile(path.join(demoSource,'index.html'),'utf8'))
