@@ -33,6 +33,16 @@ const snapshot=path.join(root,'public/dossier-challenge');
 await fs.rm(snapshot,{recursive:true,force:true});
 await fs.cp(challenge,snapshot,copyOptions);
 await fs.cp(challenge,path.join(root,kit),copyOptions);
+// Publish the versioned S17 demonstration while preserving the shared dossier sources.
+const demoSource=path.join(root,'mini-site-demonstration-seance-17-v1-a-valider');
+const demoHtml=(await fs.readFile(path.join(demoSource,'index.html'),'utf8'))
+  .replaceAll('../mon-dossier-challenge-Module05/','../../')
+  .replaceAll('../OUVRIR-SEANCE-17.html#demonstration','../../index.html');
+for(const base of [snapshot,path.join(root,kit)]){
+  const demoTarget=path.join(base,'04-WEB/mini-site-demonstration');
+  await fs.cp(demoSource,demoTarget,{recursive:true});
+  await fs.writeFile(path.join(demoTarget,'index.html'),demoHtml);
+}
 await fs.copyFile(path.join(root,publicBase+'fiche-candidat-S17.pdf'),path.join(root,kit+'fiche-candidat-S17.pdf'));
 await fs.copyFile(path.join(root,publicBase+'prompts-S17.md'),path.join(root,kit+'prompts-S17.md'));
 await fs.copyFile(path.join(root,'docs/PROMPT-MAITRE-MODULE-05.md'),path.join(root,publicBase+'PROMPT-MAITRE-MODULE-05.md'));
