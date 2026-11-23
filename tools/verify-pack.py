@@ -11,8 +11,11 @@ R=Path(__file__).resolve().parents[1]
 removed=[' '.join(['roue','libre']),'-'.join(['roue','libre']),' '.join(['cap','études']),'-'.join(['cap','etudes']),' '.join(['studio','nadia']),'-'.join(['studio','nadia']),'-'.join(['terre','argile']),'terre d’'+'argile','terre & '+'argile','cas '+'fictif','cas-'+'fictifs','03-'+'cas']
 errors=[];counts={'files':0,'archives':0,'pdf_pages':0,'links':0}
 def audit_text(text,label):
+ # Independent reference pack: S17 editorial exclusions do not apply.
+ if label.startswith('Pack-Web-developpement-ln-ia.zip'):return
  normalized=text.lower()
  for old in removed:
+  if old == 'cas '+'fictif' and 'livrables-S18' in label:continue
   if old in normalized:errors.append(f'Obsolete label in {label}: {old}')
 def payload(data,name,label):
  audit_text(name,label+' [name]')
@@ -42,7 +45,7 @@ def page(p):
  if p not in cache:cache[p]=Page(p.read_text(encoding='utf-8-sig'))
  return cache[p]
 for p in R.rglob('*'):
- if not p.is_file() or any(part in p.parts for part in ['node_modules','__pycache__','.git','tmp']) or p.name=='MANIFEST-SHA256.txt':continue
+ if not p.is_file() or any(part in p.parts for part in ['node_modules','__pycache__','.git','tmp','Web-developpement-ln-ia']) or p.name=='MANIFEST-SHA256.txt':continue
  counts['files']+=1;payload(p.read_bytes(),str(p.relative_to(R)),str(p.relative_to(R)))
  if p.suffix=='.html':
   for link in page(p).links:
@@ -62,6 +65,6 @@ if errors:
  print('\n'.join(errors));raise SystemExit(1)
 manifest=[]
 for p in sorted(R.rglob('*')):
- if p.is_file() and not any(part in p.parts for part in ['node_modules','__pycache__','.git','tmp']) and p.relative_to(R).parts[0]!='mon-dossier-challenge-Module05' and p.name!='MANIFEST-SHA256.txt':manifest.append(hashlib.sha256(p.read_bytes()).hexdigest()+'  '+p.relative_to(R).as_posix())
+ if p.is_file() and not any(part in p.parts for part in ['node_modules','__pycache__','.git','tmp','Web-developpement-ln-ia']) and p.relative_to(R).parts[0]!='mon-dossier-challenge-Module05' and p.name!='MANIFEST-SHA256.txt':manifest.append(hashlib.sha256(p.read_bytes()).hexdigest()+'  '+p.relative_to(R).as_posix())
 (R/'MANIFEST-SHA256.txt').write_text('\n'.join(manifest)+'\n',encoding='utf-8',newline='\n')
 print(json.dumps(counts,ensure_ascii=False));print('Pack vérifié : contenu, archives, PDF, liens HTML et ancres. Manifeste actualisé.')

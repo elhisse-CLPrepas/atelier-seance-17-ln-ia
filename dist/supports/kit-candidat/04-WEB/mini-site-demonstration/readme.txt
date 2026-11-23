@@ -1,9 +1,9 @@
 # Mini-site de démonstration — Séance 17
 
-**Version :** V1  
-**Statut :** VALIDÉ ET APPROUVÉ  
-**Usage :** démonstration locale du Module 05  
-**Publication :** intégré au site de l’atelier sur GitHub Pages
+**Version :** V1.2
+**Statut :** VALIDÉ ET APPROUVÉ
+**Usage :** démonstration locale du Module 05
+**Publication :** intégré au site de l’atelier sur GitHub Pages & cPanel https://clprepas.com/mini-site-demonstration-seance-17/
 
 ## Objectif
 
@@ -102,3 +102,4 @@ Le menu donne accès aux fichiers, au dossier Challenge et au carnet d’essai. 
 ## Version publiée
 
 [Ouvrir le mini-site sur GitHub Pages](https://elhisse-clprepas.github.io/atelier-seance-17-ln-ia/dossier-challenge/04-WEB/mini-site-demonstration/index.html)
+& (https://clprepas.com/mini-site-demonstration-seance-17/)

@@ -16,7 +16,7 @@ Ouvrez `mon-dossier-challenge-Module05/index.html` pour accéder directement au 
 
 ## Objectif de S17
 
-Comprendre les rôles de HTML, CSS, JavaScript et du navigateur à partir du support fourni dans `mini-site-demonstration-seance-17-v1-a-valider/`.
+Comprendre les rôles de HTML, CSS, JavaScript et du navigateur à partir du support fourni dans `mini-site-demonstration-seance-17/`.
 
 La copie de travail est intégrée dans `mon-dossier-challenge-Module05/04-WEB/mini-site-demonstration/`. Sa navigation donne accès aux sections, aux fichiers, au dossier et au carnet. Les affiches d’été sont identifiées comme supports visuels ; leurs dates ne désignent pas l’atelier d’automne.
 

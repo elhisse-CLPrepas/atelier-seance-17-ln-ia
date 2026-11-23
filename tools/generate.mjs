@@ -45,7 +45,7 @@ for(const base of [snapshot,path.join(root,kit)]){
   }
 }
 // Publish the versioned S17 demonstration while preserving the shared dossier sources.
-const demoSource=path.join(root,'mini-site-demonstration-seance-17-v1-a-valider');
+const demoSource=path.join(root,'mini-site-demonstration-seance-17');
 const demoHtml=(await fs.readFile(path.join(demoSource,'index.html'),'utf8'))
   .replaceAll('../mon-dossier-challenge-Module05/','../../')
   .replaceAll('../OUVRIR-SEANCE-17.html#demonstration','../../index.html');

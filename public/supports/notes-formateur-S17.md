@@ -278,7 +278,7 @@ Les 22 vues pédagogiques sont suivies de neuf affiches dans le PDF et le PowerP
 - Annexe 1 : Le parcours du Module 05. Vue d’ensemble du parcours, en appui à la vue 4.
 - Annexe 2 : S17 : comprendre les fondations du Web. Repère d’ouverture pour observer HTML, CSS et JavaScript.
 - Annexe 3 : La fiche de départ du projet. Support de cadrage pour préparer la suite après les essais S17.
-- Annexe 4 : S18 : vers un mini-site V1. Transition vers la suite. La date d’été imprimée appartient au support original.
+- Annexe 4 : De la séance 18 au Module 06. Piloter la production avancée IA : produire, lire, contrôler, corriger et valider. L’humain reste le pilote.
 - Annexe 5 : S19 : données locales et préparation PWA. Perspective pour la suite du module, au-delà des objectifs de S17.
 - Annexe 6 : S20 : produire, contrôler et prouver. Premier repère pour les essais et les preuves du livrable final.
 - Annexe 7 : S20 : second support de contrôle. Variante de l’affiche S20, conservée pour comparaison et discussion.
